@@ -1,29 +1,3 @@
-/*    
-create a function computerPlay
-it should pick a random number from 1 to 3 ( 0 to 2)
-return rock, paper or scissor 
-
-create a function called playARound with parameters (playerInput, computerChoice)
-Make both parameters lowercase (for easier comparison)
-if playerInput and computerChoice are the same then draw;
-if playerInput is paper and computer choice is scissors, computer wins, scissors beats paper;
-return the outcome
-
-create a function called game
-declare a variable player score 
-declare a variable computer score
-
-create a loop that plays the game untill the score is 5 for anyone
-every loop detect if score is 5, if it is declare winner and stop loop
-every loop if nobody wins write in the console the result of the match
-
-returns the winner or console log
-
-
-
-
-*/
-
 let keepGoing = true;
 
 function computerPick(computerChoice){
@@ -37,7 +11,7 @@ function playARound(playerInput = prompt('Pick one: Rock, Paper, Scissors'), com
     playerInput = playerInput.toLowerCase();
     computerChoice = computerChoice.toLowerCase();
 
-    if (playerInput === computerChoice ){
+    if (playerInput === computerChoice || playerInput== 'scissor' && computerChoice == 'scissors'){
         return 'Nobody won, it\'s a tie'
     }
     else if (playerInput == 'rock'){
@@ -56,7 +30,7 @@ function playARound(playerInput = prompt('Pick one: Rock, Paper, Scissors'), com
             return 'Player won ' + playerInput + ' beats ' + computerChoice;
         }
     }
-    else if (playerInput == 'scissors'){
+    else if (playerInput == 'scissors' || playerInput == 'scissor'){
         if (computerChoice == 'rock'){
             return 'Computer won ' + computerChoice + ' beats ' + playerInput;
         }
@@ -74,11 +48,11 @@ function game(){
     while(keepGoing){
         if (playerScore >= 5) {
             console.log('Player won the game!')
-            keepGoing = false;
+            break;
         }
         else if (computerScore >= 5){
             console.log('Computer won the game!')
-            keepGoing = false;
+            break;
         }
 
         result = playARound();
