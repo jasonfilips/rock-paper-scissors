@@ -11,31 +11,35 @@ function playARound(playerInput = prompt('Pick one: Rock, Paper, Scissors'), com
     playerInput = playerInput.toLowerCase();
     computerChoice = computerChoice.toLowerCase();
 
-    if (playerInput === computerChoice || playerInput== 'scissor' && computerChoice == 'scissors'){
+    computerWinText = 'Computer won ' + computerChoice + ' beats ' + playerInput;
+    playerWinText = 'Player won ' + playerInput + ' beats ' + computerChoice;
+
+    if (playerInput === computerChoice || playerInput== 'scissor' 
+            && computerChoice == 'scissors'){
         return 'Nobody won, it\'s a tie'
     }
     else if (playerInput == 'rock'){
         if (computerChoice == 'paper'){
-            return 'Computer won ' + computerChoice + ' beats ' + playerInput;
+            return computerWinText;
         }
         else{
-            return 'Player won ' + playerInput + ' beats ' + computerChoice;
+            return playerWinText;
         }
     }
     else if (playerInput == 'paper'){
         if (computerChoice == 'scissors'){
-            return 'Computer won ' + computerChoice + ' beats ' + playerInput;
+            return computerWinText;
         }
         else{
-            return 'Player won ' + playerInput + ' beats ' + computerChoice;
+            return playerWinText;
         }
     }
     else if (playerInput == 'scissors' || playerInput == 'scissor'){
         if (computerChoice == 'rock'){
-            return 'Computer won ' + computerChoice + ' beats ' + playerInput;
+            return computerWinText;
         }
         else{
-            return 'Player won ' + playerInput + ' beats ' + computerChoice;
+            return playerWinText;
         }
     }
     else {return 'Wrong input!'}
@@ -64,12 +68,14 @@ function game(){
         }
         if (result.charAt(0) == 'P'){
             playerScore++;
-            console.log(result + '. Scores are now: Player '+ playerScore + ', Computer ' + computerScore);
+            console.log(result + '. Scores are now: Player '+ playerScore + 
+                    ', Computer ' + computerScore);
             continue;
         }
         if (result.charAt(0) == 'C'){
             computerScore++;
-            console.log(result + '. Scores are now: Player '+ playerScore + ', Computer ' + computerScore);
+            console.log(result + '. Scores are now: Player '+ playerScore + 
+                    ', Computer ' + computerScore);
             continue;
         }
         if (result.charAt(0) == 'W'){
