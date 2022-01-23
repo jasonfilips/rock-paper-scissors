@@ -38,6 +38,7 @@ function playARound(playerInput = prompt('Pick one: Rock, Paper, Scissors'), com
             return 'Player won ' + playerInput + ' beats ' + computerChoice;
         }
     }
+    else {return 'Wrong input!'}
 }
 
 function game(){
@@ -69,6 +70,10 @@ function game(){
         if (result.charAt(0) == 'C'){
             computerScore++;
             console.log(result + '. Scores are now: Player '+ playerScore + ', Computer ' + computerScore);
+            continue;
+        }
+        if (result.charAt(0) == 'W'){
+            console.log(result);
             continue;
         }
     }
