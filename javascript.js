@@ -1,13 +1,15 @@
 let keepGoing = true;
 
-function computerPick(computerChoice){
+function getComputerChoice(computerChoice){
     let randomNumber = Math.floor(Math.random()*3)+1;
-    computerChoice = (randomNumber == 1) ? 'Rock' : (randomNumber == 2) ? 'Paper' : 'Scissors';
+    computerChoice = (randomNumber == 1) ? 'Rock' : 
+                     (randomNumber == 2) ? 'Paper' : 'Scissors';
     return computerChoice;
 }
 
-function playARound(playerInput = prompt('Pick one: Rock, Paper, Scissors'), computerChoice){
-    computerChoice = computerPick();
+function playARound(){
+    playerInput = prompt('Pick one: Rock, Paper, Scissors');
+    computerChoice = getComputerChoice();
     playerInput = playerInput.toLowerCase();
     computerChoice = computerChoice.toLowerCase();
 
@@ -16,7 +18,7 @@ function playARound(playerInput = prompt('Pick one: Rock, Paper, Scissors'), com
 
     if (playerInput === computerChoice || playerInput== 'scissor' 
             && computerChoice == 'scissors'){
-        return 'Nobody won, it\'s a tie'
+        return 'Nobody won, it\'s a tie';
     }
     else if (playerInput == 'rock'){
         if (computerChoice == 'paper'){
@@ -52,11 +54,11 @@ function game(){
 
     while(keepGoing){
         if (playerScore >= 5) {
-            console.log('Player won the game!')
+            console.log('Player won the game!');
             break;
         }
         else if (computerScore >= 5){
-            console.log('Computer won the game!')
+            console.log('Computer won the game!');
             break;
         }
 
@@ -68,13 +70,13 @@ function game(){
         }
         if (result.charAt(0) == 'P'){
             playerScore++;
-            console.log(result + '. Scores are now: Player '+ playerScore + 
+            console.log(result + '. Scores are now: Player ' + playerScore + 
                     ', Computer ' + computerScore);
             continue;
         }
         if (result.charAt(0) == 'C'){
             computerScore++;
-            console.log(result + '. Scores are now: Player '+ playerScore + 
+            console.log(result + '. Scores are now: Player ' + playerScore + 
                     ', Computer ' + computerScore);
             continue;
         }
