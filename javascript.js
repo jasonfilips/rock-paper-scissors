@@ -1,4 +1,18 @@
-let keepGoing = true;
+//let keepGoing = true;
+const imges = document.querySelectorAll('.images');
+let playerChoice;
+
+function getImageClass(e){
+    playerChoice = Array.from(this.classList)
+    playerChoice = playerChoice.pop();
+    playerChoice = String(playerChoice);
+
+    return playerChoice;
+}
+
+playerChoice = imges.forEach(img => img.addEventListener('click',getImageClass, {
+    capture: false
+}));
 
 function getComputerChoice(computerChoice){
     let randomNumber = Math.floor(Math.random()*3)+1;
@@ -8,16 +22,14 @@ function getComputerChoice(computerChoice){
 }
 
 function playARound(){
-    playerInput = prompt('Pick one: Rock, Paper, Scissors');
     computerChoice = getComputerChoice();
-    playerInput = playerInput.toLowerCase();
+    playerInput = playerChoice.toLowerCase();
     computerChoice = computerChoice.toLowerCase();
 
     computerWinText = 'Computer won ' + computerChoice + ' beats ' + playerInput;
     playerWinText = 'Player won ' + playerInput + ' beats ' + computerChoice;
 
-    if (playerInput === computerChoice || playerInput== 'scissor' 
-            && computerChoice == 'scissors'){
+    if (playerInput === computerChoice){
         return 'Nobody won, it\'s a tie';
     }
     else if (playerInput == 'rock'){
@@ -47,6 +59,8 @@ function playARound(){
     else {return 'Wrong input!'}
 }
 
+
+/*
 function game(){
     let playerScore = 0;
     let computerScore = 0;
@@ -86,3 +100,4 @@ function game(){
         }
     }
 }
+*/
