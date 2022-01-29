@@ -12,38 +12,44 @@
     <header>
         <h1>Kitsune-ken (狐拳)</h1>
         <p id='round-result'>Pick one from the left side of the screen</p>
-        <a id='reset' href="#">Reset</a>
-        <a class='about' href="#">About</a>
+        <button id='reset'>Reset</button>
+        <button data-modal-targer='modal' id='about'>About</button>
     </header>
     <main>
-        <div class='player'>
+        <div id='player'>
             <p id='player-score'>Player: 0</p>
-            <div class="player-choice">
+            <div id="player-choice">
                 <img class='images fox' src='./rps/fox.png'>
                 <img class='images hunter' src='./rps/hunter.png'>
                 <img class='images shoya' src='./rps/shoya.png'>
             </div>
         </div>
-        <div class='computer'>
+        <div id='computer'>
             <p id='computer-score'>Computer: 0</p>
-            <div class='computer-choice'>
+            <div id='computer-choice'>
 
             </div>
         </div>
     </main>
     <div class ='modal' id='modal'>
-        <div class='modal-header'>
-            <div class='modal-title'>
-
-            </div>
-            <button class='close-button'>&times;</button>
+        <div id='modal-header'>
+            <div id='modal-title'>Kitsune-ken (狐拳)</div>
+            <button id='close-button'>&times;</button>
         </div>
-        <div class ='modal-body'>
-            credits for the clipart:dasdadadadadddaddsa
-
-            How to play:
-
-            History:
+        <div id ='modal-body'>
+            <strong>Credits</strong>: https://www.irasutoya.com/<br>
+            <br>
+            <strong>How to play:</strong> fox is shot by a hunter with a gun, 
+            the hunter does not raise his head to Shoya(village head),
+            and Shoya(village head) is turned into a fox. <br>
+            <br>
+            <strong>History:</strong> Sansukumi-ken (三すくみ拳) is a category of East Asian hand games played by using three hand gestures. 
+            Ken games went into a period of decline in Japan after World War II. 
+            One of the few surviving sansukumi-ken games is jan-ken, which was brought to the West in the 20th century as rock paper scissors. <br>
+            <br>
+            The most popular sansukumi-ken game in Japan was <strong>kitsune-ken (狐拳)</strong>, also known as tōhachiken (東八拳).
+            In the game, a supernatural fox called a kitsune (狐) defeats the village head, the village head (庄屋) defeats the hunter, and the hunter (猟師) defeats the fox. 
+            A distinct feature of kitsune-ken is that the game is played by making gestures with both hands.
         </div>
     </div>
     <div id='overlay'></div>
