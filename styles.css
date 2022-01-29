@@ -16,7 +16,7 @@ header {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 5vw;
+    gap: 2vw;
 
     padding:10px;
     background-color: #080b16;
@@ -44,7 +44,7 @@ img {
     width: 14vw;
     height: auto;
     background-color: #9bb0b8;
-    border: 10px solid #993b36;
+    border: 10px solid #425052;
     border-radius: 10%;
 }
 
@@ -56,14 +56,12 @@ a {
     justify-content: center;
     align-items: center;
 
-    background-color: #e5383b;
-    border-color: #e5383b;
-    color:#f5f3f4;
+    background-color: #9bb0b8;
+    border-color: #9bb0b8;
+    color:#080b16;
 
     font-size: 18px;
     font-weight: 800;
-
-    margin:  0 2vw 0 0;
     
     border-radius: 10px;
     width: 100px;
@@ -72,6 +70,10 @@ a {
 
 h1 {
     margin-left: 2vw;
+}
+
+.about {
+    margin-right: 2vw;
 }
 
 .player {
@@ -86,17 +88,19 @@ h1 {
 
     width: 50%;
     height: 100%;
-    background-color: blue;
+    background-color: #993b36;
 }
 
-.player-score, .computer-score {
+#player-score, #computer-score {
     font-size: 32px;
     align-self: center;
     margin-bottom: auto;
+    color: #080b16;
 }
 
 .computer-choice, .player-choice {
-    margin-bottom: auto;
+    margin: auto;
+    align-self: center;
 }
 
 .computer { 
@@ -110,9 +114,18 @@ h1 {
     padding: auto;
     width: 50%;
     height: 100%;
-    background-color: red;
+    background-color: #993b36;
 }
 
-.computer p {
-    background-color: yellow;
+.modal {
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 50vw;
+    max-width: 80%;
 }

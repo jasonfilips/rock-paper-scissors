@@ -11,24 +11,41 @@
 <body>
     <header>
         <h1>Kitsune-ken (狐拳)</h1>
-        <p>Pick one from the left side of the screen</p>
-        <a href="#">About</a>
+        <p id='round-result'>Pick one from the left side of the screen</p>
+        <a id='reset' href="#">Reset</a>
+        <a class='about' href="#">About</a>
     </header>
     <main>
         <div class='player'>
-            <p class='player-score'>Player:</p>
+            <p id='player-score'>Player: 0</p>
             <div class="player-choice">
-                <img class='images paper' src='./rps/paper.png'>
-                <img class='images scissors' src='./rps/scissors.png'>
-                <img class='images rock' src='./rps/rock.png'>
+                <img class='images fox' src='./rps/fox.png'>
+                <img class='images hunter' src='./rps/hunter.png'>
+                <img class='images shoya' src='./rps/shoya.png'>
             </div>
         </div>
         <div class='computer'>
-            <p class='computer-score'>Computer:</p>
+            <p id='computer-score'>Computer: 0</p>
             <div class='computer-choice'>
 
             </div>
         </div>
     </main>
+    <div class ='modal' id='modal'>
+        <div class='modal-header'>
+            <div class='modal-title'>
+
+            </div>
+            <button class='close-button'>&times;</button>
+        </div>
+        <div class ='modal-body'>
+            credits for the clipart:dasdadadadadddaddsa
+
+            How to play:
+
+            History:
+        </div>
+    </div>
+    <div id='overlay'></div>
 </body>
 </html>

@@ -1,9 +1,10 @@
-//let keepGoing = true;
-const imges = document.querySelectorAll('.images');
-const roundResult = document.querySelector('p');
-
-
-//let playerChoice;
+const imges             = document.querySelectorAll('.images');
+const roundResult       = document.getElementById('round-result');
+const playerScoreText   = document.getElementById('player-score');
+const computerScoreText = document.getElementById('computer-score');
+const resetButton       = document.getElementById('reset');
+let playerScore = 0;
+let computerScore = 0;
 
 function changeComputerImage(imag){
     computerChoiceContainer = document.querySelector('.computer-choice');
@@ -19,9 +20,9 @@ function changeComputerImage(imag){
 
 function getComputerChoice(computerChoice){
     let randomNumber = Math.floor(Math.random()*3)+1;
-    computerChoice = (randomNumber == 1) ? 'rock' : 
-                     (randomNumber == 2) ? 'paper' : 
-                     'scissors';
+    computerChoice = (randomNumber == 1) ? 'shoya' : 
+                     (randomNumber == 2) ? 'fox' : 
+                     'hunter';
 
     changeComputerImage(computerChoice);
 
@@ -39,40 +40,63 @@ function playARound(){
         roundResult.innerText = 'Nobody won, it\'s a tie';
         return;
     }
-    else if (playerInput == 'rock'){
-        if (computerChoice == 'paper'){
+    else if (playerInput == 'shoya'){ 
+        if (computerChoice == 'fox'){
+            changeComputerScore();
             roundResult.innerText = computerWinText;
             return;
         }
         else{
-            roundResult.innerText = computerWinText;
+            changePlayerScore();
+            roundResult.innerText = playerWinText;
             return;
         }
     }
-    else if (playerInput == 'paper'){
-        if (computerChoice == 'scissors'){
+    else if (playerInput == 'fox'){
+        if (computerChoice == 'hunter'){
+            changeComputerScore();
             roundResult.innerText = computerWinText;
             return;
         }
         else{
-            roundResult.innerText = computerWinText;
+            changePlayerScore();
+            roundResult.innerText = playerWinText;
             return;
         }
     }
-    else if (playerInput == 'scissors'){
-        if (computerChoice == 'rock'){
+    else if (playerInput == 'hunter'){
+        if (computerChoice == 'shoya'){
+            changeComputerScore();
             roundResult.innerText = computerWinText;
             return;
         }
         else{
-            roundResult.innerText = computerWinText;
+            changePlayerScore();
+            roundResult.innerText = playerWinText;
             return;
         }
     }
     else {return 'Wrong input!'}
 }
 
+function changePlayerScore(){
+    playerScore++;
+    playerScoreText.innerText = 'Player: ' + playerScore;
+}
 
+function changeComputerScore(){
+    computerScore++;
+    computerScoreText.innerText = 'Computer: ' + computerScore;
+}
+
+function resetGame(){
+    playerScore = 0;
+    computerScore = 0;
+
+    playerScoreText.innerText = 'Player: ' + playerScore;
+    computerScoreText.innerText = 'Computer: ' + computerScore;
+    roundResult.innerText = 'Pick one from the left side of the screen';
+}
 
 function getImageClass(e){
     playerChoice = Array.from(this.classList)
@@ -86,45 +110,4 @@ imges.forEach(img => img.addEventListener('click',getImageClass, {
     capture: false
 }));
 
-
-/*
-function game(){
-    let playerScore = 0;
-    let computerScore = 0;
-    let result;
-
-    while(keepGoing){
-        if (playerScore >= 5) {
-            console.log('Player won the game!');
-            break;
-        }
-        else if (computerScore >= 5){
-            console.log('Computer won the game!');
-            break;
-        }
-
-        result = playARound();
-
-        if (result.charAt(0) == 'N'){
-            console.log(result);
-            continue;
-        }
-        if (result.charAt(0) == 'P'){
-            playerScore++;
-            console.log(result + '. Scores are now: Player ' + playerScore + 
-                    ', Computer ' + computerScore);
-            continue;
-        }
-        if (result.charAt(0) == 'C'){
-            computerScore++;
-            console.log(result + '. Scores are now: Player ' + playerScore + 
-                    ', Computer ' + computerScore);
-            continue;
-        }
-        if (result.charAt(0) == 'W'){
-            console.log(result);
-            continue;
-        }
-    }
-}
-*/
+resetButton.addEventListener('click', resetGame);
