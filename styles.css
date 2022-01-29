@@ -16,9 +16,20 @@ header {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: 5vw;
 
     padding:10px;
-    background-color: rebeccapurple;
+    background-color: #080b16;
+}
+
+header p, h1 {
+    color: #e7cfa3;
+}
+
+header p {
+    display: flex;
+    font-size: 24px;
+    flex: 1;
 }
 
 main {
@@ -29,7 +40,7 @@ main {
 }
 
 img {
-    min-width: 200px;
+    min-width: 150px;
     width: 14vw;
     height: auto;
     background-color: #9bb0b8;
@@ -52,7 +63,7 @@ a {
     font-size: 18px;
     font-weight: 800;
 
-    margin:  0 2vw 0 auto;
+    margin:  0 2vw 0 0;
     
     border-radius: 10px;
     width: 100px;
@@ -65,6 +76,7 @@ h1 {
 
 .player {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -77,8 +89,19 @@ h1 {
     background-color: blue;
 }
 
-.opponent { 
+.player-score, .computer-score {
+    font-size: 32px;
+    align-self: center;
+    margin-bottom: auto;
+}
+
+.computer-choice, .player-choice {
+    margin-bottom: auto;
+}
+
+.computer { 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
@@ -90,3 +113,6 @@ h1 {
     background-color: red;
 }
 
+.computer p {
+    background-color: yellow;
+}

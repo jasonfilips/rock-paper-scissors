@@ -1,63 +1,90 @@
 //let keepGoing = true;
 const imges = document.querySelectorAll('.images');
-let playerChoice;
+const roundResult = document.querySelector('p');
+
+
+//let playerChoice;
+
+function changeComputerImage(imag){
+    computerChoiceContainer = document.querySelector('.computer-choice');
+
+    while (computerChoiceContainer.firstChild){
+        computerChoiceContainer.removeChild(computerChoiceContainer.firstChild)
+    }
+
+    computerChoiceImage = document.createElement('img');
+    computerChoiceImage.src = './rps/'+imag+'.png';
+    computerChoiceContainer.appendChild(computerChoiceImage);
+}
+
+function getComputerChoice(computerChoice){
+    let randomNumber = Math.floor(Math.random()*3)+1;
+    computerChoice = (randomNumber == 1) ? 'rock' : 
+                     (randomNumber == 2) ? 'paper' : 
+                     'scissors';
+
+    changeComputerImage(computerChoice);
+
+    return computerChoice;
+}
+
+function playARound(){
+    computerChoice = getComputerChoice();
+    playerInput = playerChoice;
+
+    computerWinText = 'Computer won ' + computerChoice + ' beats ' + playerInput;
+    playerWinText = 'Player won ' + playerInput + ' beats ' + computerChoice;
+
+    if (playerInput === computerChoice){
+        roundResult.innerText = 'Nobody won, it\'s a tie';
+        return;
+    }
+    else if (playerInput == 'rock'){
+        if (computerChoice == 'paper'){
+            roundResult.innerText = computerWinText;
+            return;
+        }
+        else{
+            roundResult.innerText = computerWinText;
+            return;
+        }
+    }
+    else if (playerInput == 'paper'){
+        if (computerChoice == 'scissors'){
+            roundResult.innerText = computerWinText;
+            return;
+        }
+        else{
+            roundResult.innerText = computerWinText;
+            return;
+        }
+    }
+    else if (playerInput == 'scissors'){
+        if (computerChoice == 'rock'){
+            roundResult.innerText = computerWinText;
+            return;
+        }
+        else{
+            roundResult.innerText = computerWinText;
+            return;
+        }
+    }
+    else {return 'Wrong input!'}
+}
+
+
 
 function getImageClass(e){
     playerChoice = Array.from(this.classList)
     playerChoice = playerChoice.pop();
     playerChoice = String(playerChoice);
 
-    return playerChoice;
+    playARound(playerChoice);
 }
 
-playerChoice = imges.forEach(img => img.addEventListener('click',getImageClass, {
+imges.forEach(img => img.addEventListener('click',getImageClass, {
     capture: false
 }));
-
-function getComputerChoice(computerChoice){
-    let randomNumber = Math.floor(Math.random()*3)+1;
-    computerChoice = (randomNumber == 1) ? 'Rock' : 
-                     (randomNumber == 2) ? 'Paper' : 'Scissors';
-    return computerChoice;
-}
-
-function playARound(){
-    computerChoice = getComputerChoice();
-    playerInput = playerChoice.toLowerCase();
-    computerChoice = computerChoice.toLowerCase();
-
-    computerWinText = 'Computer won ' + computerChoice + ' beats ' + playerInput;
-    playerWinText = 'Player won ' + playerInput + ' beats ' + computerChoice;
-
-    if (playerInput === computerChoice){
-        return 'Nobody won, it\'s a tie';
-    }
-    else if (playerInput == 'rock'){
-        if (computerChoice == 'paper'){
-            return computerWinText;
-        }
-        else{
-            return playerWinText;
-        }
-    }
-    else if (playerInput == 'paper'){
-        if (computerChoice == 'scissors'){
-            return computerWinText;
-        }
-        else{
-            return playerWinText;
-        }
-    }
-    else if (playerInput == 'scissors' || playerInput == 'scissor'){
-        if (computerChoice == 'rock'){
-            return computerWinText;
-        }
-        else{
-            return playerWinText;
-        }
-    }
-    else {return 'Wrong input!'}
-}
 
 
 /*
