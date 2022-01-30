@@ -17,7 +17,6 @@ function changeComputerImage(imag){
     while (computerChoiceContainer.firstChild){
         computerChoiceContainer.removeChild(computerChoiceContainer.firstChild)
     }
-
     computerChoiceImage = document.createElement('img');
     computerChoiceImage.src = './rps/'+imag+'.png';
     computerChoiceContainer.appendChild(computerChoiceImage);
@@ -28,9 +27,7 @@ function getComputerChoice(computerChoice){
     computerChoice = (randomNumber == 1) ? 'shoya' : 
                      (randomNumber == 2) ? 'fox' : 
                      'hunter';
-
     changeComputerImage(computerChoice);
-
     return computerChoice;
 }
 
@@ -79,34 +76,38 @@ function playARound(){
 }
 
 function changePlayerScore(playerInput,computerChoice){
-    if (playerScore >= 5){
-        roundResult.innerText = 'Player wins the match!';
-        return;
-    }
     playerScore++;
     roundResult.innerText = 'Player won ' + playerInput + ' beats ' + computerChoice;
     playerScoreText.innerText = 'Player: ' + playerScore;
     playerBackground.style.backgroundColor = '#89a578';
     computerBackground.style.backgroundColor = '#993b36';
+    checkWinner();
 }
 
 function changeComputerScore(){
-    if (computerScore >= 5){
-        roundResult.innerText = 'Computer wins the match!';
-        return;
-    }
     computerScore++;
     roundResult.innerText = 'Computer won ' + computerChoice + ' beats ' + playerInput;
     computerScoreText.innerText = 'Computer: ' + computerScore;
     playerBackground.style.backgroundColor = '#993b36';
     computerBackground.style.backgroundColor = '#89a578';
+    checkWinner();
+}
+
+function checkWinner() {
+    if (computerScore == 5){
+        roundResult.innerText = 'Computer wins the match!';
+        return;
+    }
+    else if (playerScore == 5){
+        roundResult.innerText = 'Player wins the match!';
+        return;
+    }
+    else {return;}
 }
 
 function resetGame(){
     playerScore = 0;
     computerScore = 0;
-    
-
     playerScoreText.innerText = 'Player: ' + playerScore;
     computerScoreText.innerText = 'Computer: ' + computerScore;
     roundResult.innerText = 'Pick one from the left side of the screen';
